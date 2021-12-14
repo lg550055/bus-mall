@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js" integrity="sha512-tMabqarPtykgDtdtSqCL3uLVM0gS1ZkUAVhRFu1vSEFgvB73niFQWJuvviDyBGBH22Lcau4rHB5p2K2T0Xvr6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>Product Picker</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
@@ -15,6 +15,9 @@
     <section id="current-products">
     </section>
     <button id="view-results" onclick="renderResults()">View Results</button>
+    <div>
+      <canvas id="chart"></canvas>
+    </div>
     <ul id="display-results"></ul>
   </main>
   <footer>Created by Awesome Apps LLC</footer>
