@@ -1,7 +1,7 @@
 'use strict';
 // Global variables: number of items to compare side by side, number of sets to compare, array to hold items.
 const numberCompared = 3;
-let rounds = 25;
+let rounds = 5;
 let allProducts = [];
 // Item constructor
 function Product(name, extension='jpg') {
@@ -31,6 +31,9 @@ new Product('tauntaun');
 new Product('unicorn');
 new Product('water-can');
 new Product('wine-glass');
+
+let cummVotes = Array(allProducts.length).fill(null);
+let cummShown = Array(allProducts.length).fill(null);
 // Function selects random items to display side by side, prevents duplicates by excluding selected, adds elemnt to display item, and tracks times item is shown.
 let pvProd = [];
 const section = document.getElementById('current-products');
@@ -76,8 +79,24 @@ function handleImageClick(e) {
 }
 // Generates results list when button (view-results) clicked, then disables it to prevent duplicating results
 function renderResults() {
-  const ctx = document.getElementById('chart').getContext('2d');
-  let chartData = {
+  let v = localStorage.getItem('cummV');
+  let s = localStorage.getItem('cummS');
+  if (v) {
+    cummVotes = JSON.parse(v);
+    cummShown = JSON.parse(s);
+  }
+
+  for (let i=0; i<allProducts.length; i++) {
+    cummVotes[i] += allProducts[i].votes;
+    cummShown[i] += allProducts[i].shown;
+  }
+  console.log('v',cummVotes);
+  console.log('s',cummShown);
+  localStorage.setItem( 'cummV', JSON.stringify(cummVotes) );
+  localStorage.setItem( 'cummS', JSON.stringify(cummShown) );
+
+  const round = document.getElementById('chart-round').getContext('2d');
+  let roundData = {
     type: 'bar',
     data: {
       labels: allProducts.map(x => x.name),
@@ -86,9 +105,23 @@ function renderResults() {
         {label:'Shown', borderColor:'aquamarine', backgroundColor:'aquamarine', borderWidth:1, data: allProducts.map(x => x.shown)}
       ]  
     },
-    options: {plugins: {title: {display:true, text:'Results', font:{size:20}, color:'grey' }}}
+    options: {plugins: {title: {display:true, text:'This Round Results', font:{size:20}, color:'grey' }}}
   };
-  new Chart(ctx, chartData);
+  new Chart(round, roundData);
+
+  const cumm = document.getElementById('chart-cumm').getContext('2d');
+  let cummData = {
+    type: 'bar',
+    data: {
+      labels: allProducts.map(x => x.name),
+      datasets: [
+        {label:'Votes', borderColor:'lightseagreen', backgroundColor:'lightseagreen', borderWidth:1, data: cummVotes},
+        {label:'Shown', borderColor:'aquamarine', backgroundColor:'aquamarine', borderWidth:1, data: cummShown}
+      ]  
+    },
+    options: {plugins: {title: {display:true, text:'Cummulative Results', font:{size:20}, color:'grey' }}}
+  };
+  new Chart(cumm, cummData);
 
   let ul = document.getElementById('display-results');
   allProducts.forEach(e => {

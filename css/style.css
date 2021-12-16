@@ -8,21 +8,21 @@ body {
 }
 
 header {
-  padding: 3%;
+  padding: 2%;
   font-size: 1.5em;
-  border-bottom: 1px solid grey;
-  margin: 0 2% 5%;
+  border-bottom: 2px solid lightgrey;
+  margin: 0 2% 4%;
 }
 
 section {
-  padding: 3% 0 3% 2%;
+  padding: 4% 0 4% 2%;
 }
 
 section img {
   width: 27%;
   margin-right: 2%;
   padding: 2%;
-  border: 1px solid aquamarine;
+  border: 1px solid lightgrey;
 }
 
 div {
@@ -50,5 +50,5 @@ footer {
   margin: 5% 2% 0%;
   font-family: 'Times New Roman', Times, serif;
   font-size: .75em;
-  border-top: 1px solid grey;
+  border-top: 1px solid lightgrey;
 }
