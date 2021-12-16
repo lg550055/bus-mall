@@ -1,7 +1,7 @@
 'use strict';
 // Global variables: number of items to compare side by side, number of sets to compare, array to hold items.
 const numberCompared = 3;
-let rounds = 25;
+let rounds = 2;
 let allProducts = [];
 // Item constructor
 function Product(name, extension='jpg') {
@@ -105,7 +105,7 @@ function renderResults() {
         {label:'Shown', borderColor:'aquamarine', backgroundColor:'aquamarine', borderWidth:1, data: allProducts.map(x => x.shown)}
       ]  
     },
-    options: {plugins: {title: {display:true, text:'This Round Results', font:{size:20}, color:'grey' }}}
+    options: {plugins: {title: {display:true, text:'Round Results', font:{size:20}, color:'grey' }}}
   };
   new Chart(round, roundData);
 
@@ -124,11 +124,11 @@ function renderResults() {
   new Chart(cumm, cummData);
 
   let ul = document.getElementById('display-results');
+  ul.textContent = 'Round Results';
   allProducts.forEach(e => {
     let li = document.createElement('li');
     li.innerHTML = `${e.name} had ${e.votes} votes, and was seen ${e.shown} times`;
     ul.appendChild(li);
-  // document.getElementById('view-results').removeAttribute('onclick');
   document.getElementById('view-results').style.visibility='hidden';
   });
 }
