@@ -7,4 +7,4 @@ Once the total number of sets has been displayed and voted, the user may click o
 
 It has persistent (local) storage to display cummulative results
 
-**Needs button to allow user to reset cummulative results**
+*Needs button to allow user to reset cummulative results*
