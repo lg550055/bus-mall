@@ -1,7 +1,7 @@
 'use strict';
 // Global variables: number of items to compare side by side, number of sets to compare, array to hold items.
 const numberCompared = 3;
-let rounds = 2;
+let rounds = 25;
 let allProducts = [];
 // Item constructor
 function Product(name, extension='jpg') {
