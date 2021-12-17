@@ -10,8 +10,9 @@ body {
 header {
   padding: 2%;
   font-size: 1.5em;
+  text-shadow: 2px 2px lightgrey;
   border-bottom: 2px solid lightgrey;
-  margin: 0 2% 4%;
+  margin: 0 2% 6%;
 }
 
 section {
@@ -24,6 +25,13 @@ section img {
   padding: 2%;
   border: 1px solid lightgrey;
 }
+
+section img:hover {
+  padding: 1%;
+  transform: scale(1.1);
+  border: none;
+}
+
 
 div {
   padding: 0 2%;
@@ -38,11 +46,19 @@ button  {
   visibility: hidden;
 }
 
+button:hover {
+  transform: scale(1.1);
+}
+
 ul {
   margin: 3% 0;
-  line-height: 1.3em;
+  line-height: 1.4em;
   font-size: 0.8em;
   color: grey;
+}
+
+li:first-letter {
+  text-transform: uppercase;
 }
 
 footer {

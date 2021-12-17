@@ -90,8 +90,6 @@ function renderResults() {
     cummVotes[i] += allProducts[i].votes;
     cummShown[i] += allProducts[i].shown;
   }
-  console.log('v',cummVotes);
-  console.log('s',cummShown);
   localStorage.setItem( 'cummV', JSON.stringify(cummVotes) );
   localStorage.setItem( 'cummS', JSON.stringify(cummShown) );
 
